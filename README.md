@@ -1,3 +1,32 @@
+# SNS-Lampstack
+
+This LAMPSTACK module will install a complete LAMP server on a RHEL7 linux machine.
+
+You will need to create a profile class in order to set hostname, vhost url, SSL
+and PHP version. In the examples folder you will find a (non-Puppet) profile template, with further examples described in the file.
+
+## PHP versions
+
+RHEL7 comes with PHP 5.4. In the profile class you can set a higher version, beginning with 5.5, up to 7.1.
+
+## Wordpress installation
+
+Wordpress is installed by de fault but can be disabled by omitting the following entry in init.pp:
+
+
+````# Optional provisioning of a Wordpress bundle
+    class { 'lampstack::wp':
+      require => Notify['Public HTML folder settings Complete']
+    }
+````
+
+## Manifests
+
+In manifests, the following classes are described:
+
+### db.pp
+
+
 # puppet-rhel
 
 ## Overview
